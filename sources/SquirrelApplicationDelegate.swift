@@ -11,8 +11,8 @@ import AppKit
 
 final class SquirrelApplicationDelegate: NSObject, NSApplicationDelegate, SPUStandardUserDriverDelegate, UNUserNotificationCenterDelegate {
   static let rimeWikiURL = URL(string: "https://github.com/rime/home/wiki")!
-  static let updateNotificationIdentifier = "SquirrelUpdateNotification"
-  static let notificationIdentifier = "SquirrelNotification"
+  static let updateNotificationIdentifier = "WubiVoiceUpdateNotification"
+  static let notificationIdentifier = "WubiVoiceNotification"
 
   let rimeAPI: RimeApi_stdbool = rime_get_api_stdbool().pointee
   var config: SquirrelConfig?
@@ -107,7 +107,7 @@ final class SquirrelApplicationDelegate: NSObject, NSApplicationDelegate, SPUSta
     center.getNotificationSettings { settings in
       if (settings.authorizationStatus == .authorized || settings.authorizationStatus == .provisional) && settings.alertSetting == .enabled {
         let content = UNMutableNotificationContent()
-        content.title = NSLocalizedString("Squirrel", comment: "")
+        content.title = NSLocalizedString("WubiVoice", comment: "")
         if let msgText = msgText {
           content.subtitle = msgText
         }
@@ -135,10 +135,10 @@ final class SquirrelApplicationDelegate: NSObject, NSApplicationDelegate, SPUSta
     squirrelTraits.setCString(Bundle.main.sharedSupportPath!, to: \.shared_data_dir)
     squirrelTraits.setCString(SquirrelApp.userDir.path(), to: \.user_data_dir)
     squirrelTraits.setCString(SquirrelApp.logDir.path(), to: \.log_dir)
-    squirrelTraits.setCString("Squirrel", to: \.distribution_code_name)
-    squirrelTraits.setCString("鼠鬚管", to: \.distribution_name)
+    squirrelTraits.setCString("WubiVoice", to: \.distribution_code_name)
+    squirrelTraits.setCString("WubiVoice", to: \.distribution_name)
     squirrelTraits.setCString(Bundle.main.object(forInfoDictionaryKey: kCFBundleVersionKey as String) as! String, to: \.distribution_version)
-    squirrelTraits.setCString("rime.squirrel", to: \.app_name)
+    squirrelTraits.setCString("ai.hojo.WubiVoice", to: \.app_name)
     rimeAPI.setup(&squirrelTraits)
   }
 

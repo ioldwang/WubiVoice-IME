@@ -8,7 +8,9 @@ test -f "${project_file}"
 anchor=(80 65 terra_pinyin.schema.yaml)
 anchor_lib=(9D 9A librime-lua.dylib)
 
-lastid=80
+# 81-90 are already occupied in the Xcode project. Start after that range so
+# data introduced by newer pinned recipes cannot reuse an existing PBX UUID.
+lastid=90
 
 obj_entry() {
     local id=$1
