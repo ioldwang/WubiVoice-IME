@@ -11,9 +11,15 @@ import InputMethodKit
 @main
 struct SquirrelApp {
   static let userDir = if let pwuid = getpwuid(getuid()) {
-    URL(fileURLWithFileSystemRepresentation: pwuid.pointee.pw_dir, isDirectory: true, relativeTo: nil).appending(components: "Library", "Rime")
+    WubiVoicePaths.userDirectory(
+      home: URL(
+        fileURLWithFileSystemRepresentation: pwuid.pointee.pw_dir,
+        isDirectory: true,
+        relativeTo: nil
+      )
+    )
   } else {
-    try! FileManager.default.url(for: .libraryDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("Rime", isDirectory: true)
+    WubiVoicePaths.userDirectory(home: FileManager.default.homeDirectoryForCurrentUser)
   }
   static let appDir = "/Library/Input Methods/WubiVoice.app".withCString { dir in
     URL(fileURLWithFileSystemRepresentation: dir, isDirectory: false, relativeTo: nil)

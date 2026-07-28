@@ -125,6 +125,21 @@ final class SquirrelApplicationDelegate: NSObject, NSApplicationDelegate, SPUSta
   func setupRime() {
     createDirIfNotExist(path: SquirrelApp.userDir)
     createDirIfNotExist(path: SquirrelApp.logDir)
+    if let sharedSupportURL = Bundle.main.sharedSupportURL {
+      let bundledDefault = sharedSupportURL.appendingPathComponent("wubivoice.default.custom.yaml")
+      if FileManager.default.fileExists(atPath: bundledDefault.path) {
+        do {
+          try WubiVoicePaths.seedDefaultConfiguration(
+            from: bundledDefault,
+            to: SquirrelApp.userDir
+          )
+        } catch {
+          print("Failed to seed WubiVoice default configuration: \(error)")
+          Self.showMessage(msgText: NSLocalizedString("deploy_failure", comment: ""))
+          return
+        }
+      }
+    }
     // swiftlint:disable identifier_name
     let notification_handler: @convention(c) (UnsafeMutableRawPointer?, RimeSessionId, UnsafePointer<CChar>?, UnsafePointer<CChar>?) -> Void = notificationHandler
     let context_object = Unmanaged.passUnretained(self).toOpaque()

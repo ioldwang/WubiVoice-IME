@@ -25,7 +25,7 @@
 441E639322B7E96F006DCCDD /* cangjie5.extended.dict.yaml in Copy Shared Support Files */ = {isa = PBXBuildFile; fileRef = 441E639422B7E90C006DCCDD /* cangjie5.extended.dict.yaml */; };
 441E639122B7E96F006DCCDD /* cangjie5.base.dict.yaml in Copy Shared Support Files */ = {isa = PBXBuildFile; fileRef = 441E639222B7E90C006DCCDD /* cangjie5.base.dict.yaml */; };
 		441E638122B7E96F006DCCDD /* detenele.schema.yaml in Copy Shared Support Files */ = {isa = PBXBuildFile; fileRef = 441E638222B7E90C006DCCDD /* detenele.schema.yaml */; };
-		441E638122B7E96F006DCCDD /* terra_pinyin_12345.schema.yaml in Copy Shared Support Files */ = {isa = PBXBuildFile; fileRef = 441E638222B7E90C006DCCDD /* terra_pinyin_12345.schema.yaml */; };
+		A17E00000000000000000003 /* terra_pinyin_12345.schema.yaml in Copy Shared Support Files */ = {isa = PBXBuildFile; fileRef = A17E00000000000000000004 /* terra_pinyin_12345.schema.yaml */; };
 		442B5B881570C37200370DEA /* squirrel.yaml in Copy Shared Support Files */ = {isa = PBXBuildFile; fileRef = 442B5B871570C37200370DEA /* squirrel.yaml */; };
 		442C64921F7A410A0027EFBE /* rime-install in CopyFiles */ = {isa = PBXBuildFile; fileRef = 442C64901F7A404A0027EFBE /* rime-install */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		446C01D71F767BD400A6C23E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 446C01D61F767BD400A6C23E /* Assets.xcassets */; };
@@ -77,6 +77,7 @@
 		7B5488C01D2DACDF0056A1BE /* luna_pinyin.schema.yaml in Copy Shared Support Files */ = {isa = PBXBuildFile; fileRef = 7B5488321D2DAAD10056A1BE /* luna_pinyin.schema.yaml */; };
 		7B5488C11D2DACDF0056A1BE /* luna_quanpin.schema.yaml in Copy Shared Support Files */ = {isa = PBXBuildFile; fileRef = 7B5488331D2DAAD10056A1BE /* luna_quanpin.schema.yaml */; };
 		7B5488C91D2DACDF0056A1BE /* symbols.yaml in Copy Shared Support Files */ = {isa = PBXBuildFile; fileRef = 7B54883B1D2DAAD10056A1BE /* symbols.yaml */; };
+		A17E00000000000000000001 /* WubiVoicePaths.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17E00000000000000000002 /* WubiVoicePaths.swift */; };
 		B3216E5C2BF438F800E292D2 /* rime.pdf in Resources */ = {isa = PBXBuildFile; fileRef = B3216E5B2BF438F800E292D2 /* rime.pdf */; };
 		B35D2FE82BF00839009D156B /* BridgingFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35D2FE72BF00839009D156B /* BridgingFunctions.swift */; };
 		B38E9B912BE9AE1E0036ABEF /* SquirrelApplicationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38E9B902BE9AE1E0036ABEF /* SquirrelApplicationDelegate.swift */; };
@@ -171,7 +172,7 @@
 441E639322B7E96F006DCCDD /* cangjie5.extended.dict.yaml in Copy Shared Support Files */,
 441E639122B7E96F006DCCDD /* cangjie5.base.dict.yaml in Copy Shared Support Files */,
 				441E638122B7E96F006DCCDD /* detenele.schema.yaml in Copy Shared Support Files */,
-				441E638122B7E96F006DCCDD /* terra_pinyin_12345.schema.yaml in Copy Shared Support Files */,
+				A17E00000000000000000003 /* terra_pinyin_12345.schema.yaml in Copy Shared Support Files */,
 				44AEBC7521F569FD00344375 /* key_bindings.yaml in Copy Shared Support Files */,
 				44AEBC7621F569FD00344375 /* punctuation.yaml in Copy Shared Support Files */,
 				7B5488AF1D2DACDF0056A1BE /* default.yaml in Copy Shared Support Files */,
@@ -229,7 +230,7 @@
 441E639422B7E90C006DCCDD /* cangjie5.extended.dict.yaml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = cangjie5.extended.dict.yaml; path = data/plum/cangjie5.extended.dict.yaml; sourceTree = "<group>"; };
 441E639222B7E90C006DCCDD /* cangjie5.base.dict.yaml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = cangjie5.base.dict.yaml; path = data/plum/cangjie5.base.dict.yaml; sourceTree = "<group>"; };
 		441E638222B7E90C006DCCDD /* detenele.schema.yaml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = detenele.schema.yaml; path = data/plum/detenele.schema.yaml; sourceTree = "<group>"; };
-		441E638222B7E90C006DCCDD /* terra_pinyin_12345.schema.yaml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = terra_pinyin_12345.schema.yaml; path = data/plum/terra_pinyin_12345.schema.yaml; sourceTree = "<group>"; };
+		A17E00000000000000000004 /* terra_pinyin_12345.schema.yaml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = terra_pinyin_12345.schema.yaml; path = data/plum/terra_pinyin_12345.schema.yaml; sourceTree = "<group>"; };
 		441E636622B7E90C006DCCDD /* cangjie5_express.schema.yaml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = cangjie5_express.schema.yaml; path = data/plum/cangjie5_express.schema.yaml; sourceTree = "<group>"; };
 		441E636722B7E90D006DCCDD /* bopomofo_tw.schema.yaml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = bopomofo_tw.schema.yaml; path = data/plum/bopomofo_tw.schema.yaml; sourceTree = "<group>"; };
 		441E636822B7E90D006DCCDD /* bopomofo.schema.yaml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = bopomofo.schema.yaml; path = data/plum/bopomofo.schema.yaml; sourceTree = "<group>"; };
@@ -290,6 +291,7 @@
 		7B54883B1D2DAAD10056A1BE /* symbols.yaml */ = {isa = PBXFileReference; lastKnownFileType = text; name = symbols.yaml; path = data/plum/symbols.yaml; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = resources/Info.plist; sourceTree = "<group>"; };
 		A4B8E1B20F645B870094E08B /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
+		A17E00000000000000000002 /* WubiVoicePaths.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WubiVoicePaths.swift; path = sources/WubiVoicePaths.swift; sourceTree = "<group>"; };
 		B3216E5B2BF438F800E292D2 /* rime.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = rime.pdf; path = resources/rime.pdf; sourceTree = "<group>"; };
 		B32B80772BE7FAA200FCF3BC /* Squirrel.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; name = Squirrel.entitlements; path = resources/Squirrel.entitlements; sourceTree = "<group>"; };
 		B35D2FE72BF00839009D156B /* BridgingFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BridgingFunctions.swift; path = sources/BridgingFunctions.swift; sourceTree = "<group>"; };
@@ -334,6 +336,7 @@
 				B39771222BECEA150093A49B /* MacOSKeyCodes.swift */,
 				B397712C2BEEB39D0093A49B /* InputSource.swift */,
 				B397712E2BEECBED0093A49B /* Main.swift */,
+				A17E00000000000000000002 /* WubiVoicePaths.swift */,
 				B39771262BED9B250093A49B /* SquirrelTheme.swift */,
 				B397712A2BEE4C160093A49B /* SquirrelPanel.swift */,
 				B39771282BEDAF4A0093A49B /* SquirrelView.swift */,
@@ -494,7 +497,7 @@
 441E639422B7E90C006DCCDD /* cangjie5.extended.dict.yaml */,
 441E639222B7E90C006DCCDD /* cangjie5.base.dict.yaml */,
 				441E638222B7E90C006DCCDD /* detenele.schema.yaml */,
-				441E638222B7E90C006DCCDD /* terra_pinyin_12345.schema.yaml */,
+				A17E00000000000000000004 /* terra_pinyin_12345.schema.yaml */,
 				7B5488211D2DAAD10056A1BE /* default.yaml */,
 				7B5488291D2DAAD10056A1BE /* essay.txt */,
 				7B54882E1D2DAAD10056A1BE /* luna_pinyin_fluency.schema.yaml */,
@@ -600,6 +603,7 @@
 				B38E9B952BEAFEFD0036ABEF /* SquirrelInputController.swift in Sources */,
 				B39771252BED899F0093A49B /* SquirrelConfig.swift in Sources */,
 				B397712F2BEECBED0093A49B /* Main.swift in Sources */,
+				A17E00000000000000000001 /* WubiVoicePaths.swift in Sources */,
 				B397712D2BEEB39D0093A49B /* InputSource.swift in Sources */,
 				B397712B2BEE4C160093A49B /* SquirrelPanel.swift in Sources */,
 				B38E9B912BE9AE1E0036ABEF /* SquirrelApplicationDelegate.swift in Sources */,
