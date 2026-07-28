@@ -52,6 +52,29 @@
         }
       }
     },
+    "Enter clears composition" : {
+      "comment" : "Menu item",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter clears composition"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter 清除编码"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter 清除編碼"
+          }
+        }
+      }
+    },
     "deploy_failure" : {
       "localizations" : {
         "en" : {

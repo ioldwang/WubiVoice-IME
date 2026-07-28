@@ -28,6 +28,7 @@ final class SquirrelInputController: IMKInputController {
   private var chordTimer: Timer?
   private var chordDuration: TimeInterval = 0
   private var currentApp: String = ""
+  private let wubiVoicePreferences = WubiVoicePreferences()
 
   // swiftlint:disable:next cyclomatic_complexity
   override func handle(_ event: NSEvent!, client sender: Any!) -> Bool {
@@ -239,8 +240,17 @@ final class SquirrelInputController: IMKInputController {
     wiki.target = self
     let update = NSMenuItem(title: NSLocalizedString("Check for updates...", comment: "Menu item"), action: #selector(checkForUpdates), keyEquivalent: "")
     update.target = self
+    let enterClear = NSMenuItem(
+      title: NSLocalizedString("Enter clears composition", comment: "Menu item"),
+      action: #selector(toggleEnterClear),
+      keyEquivalent: ""
+    )
+    enterClear.target = self
+    enterClear.state = wubiVoicePreferences.enterClearsComposition ? .on : .off
 
     let menu = NSMenu()
+    menu.addItem(enterClear)
+    menu.addItem(.separator())
     menu.addItem(deploy)
     menu.addItem(sync)
     menu.addItem(logDir)
@@ -273,6 +283,11 @@ final class SquirrelInputController: IMKInputController {
 
   @objc func openWiki() {
     NSApp.squirrelAppDelegate.openWiki()
+  }
+
+  @objc func toggleEnterClear(_ sender: NSMenuItem) {
+    wubiVoicePreferences.enterClearsComposition.toggle()
+    sender.state = wubiVoicePreferences.enterClearsComposition ? .on : .off
   }
 
   deinit {
@@ -370,7 +385,16 @@ private extension SquirrelInputController {
   }
 
   func processKey(_ rimeKeycode: UInt32, modifiers rimeModifiers: UInt32) -> Bool {
-    // TODO add special key event preprocessing here
+    let composing = rimeAPI.get_input(session).map {
+      !String(cString: $0).isEmpty
+    } ?? false
+    if wubiVoicePreferences.shouldClearEnter(
+      isReturn: rimeKeycode == UInt32(XK_Return),
+      isComposing: composing
+    ) {
+      _ = rimeAPI.process_key(session, XK_Escape, 0)
+      return true
+    }
 
     // with linear candidate list, arrow keys may behave differently.
     if let panel = NSApp.squirrelAppDelegate.panel {
