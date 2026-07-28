@@ -1,0 +1,17 @@
+#!/bin/bash
+set -euo pipefail
+
+app=build/Build/Products/Release/WubiVoice.app
+binary="$app/Contents/MacOS/WubiVoice"
+
+bash tests/test_branding.sh
+python3 tests/test_schema_source.py
+bash tests/run_rime_snapshots.sh
+test "$(lipo -archs "$binary" | tr ' ' '\n' | sort | tr '\n' ' ')" \
+  = "arm64 x86_64 "
+codesign --verify --deep --strict "$app"
+plutil -lint "$app/Contents/Info.plist"
+test -f "$app/Contents/SharedSupport/WUBI-SCHEMA-LICENSE.txt"
+test -f "$app/Contents/SharedSupport/wubi86_jidian.schema.yaml"
+test -f \
+  "$app/Contents/SharedSupport/lua/wubivoice_single_char_filter.lua"
