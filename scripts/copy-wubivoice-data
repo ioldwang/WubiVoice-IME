@@ -1,0 +1,12 @@
+#!/bin/bash
+set -euo pipefail
+
+app=${1:?usage: copy-wubivoice-data PATH_TO_APP}
+shared="${app}/Contents/SharedSupport"
+source=data/wubivoice
+
+mkdir -p "${shared}/lua"
+cp "${source}"/*.yaml "${shared}/"
+cp "${source}"/lua/*.lua "${shared}/lua/"
+cp "${source}/LICENSE" "${shared}/WUBI-SCHEMA-LICENSE.txt"
+codesign --force --deep --sign - "${app}"

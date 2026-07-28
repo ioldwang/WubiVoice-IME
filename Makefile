@@ -103,11 +103,13 @@ release: $(DEPS_CHECK)
 	mkdir -p $(DERIVED_DATA_PATH)
 	bash package/add_data_files
 	xcodebuild -project Squirrel.xcodeproj -configuration Release -scheme Squirrel -derivedDataPath $(DERIVED_DATA_PATH) $(BUILD_SETTINGS) build
+	bash scripts/copy-wubivoice-data $(DERIVED_DATA_PATH)/Build/Products/Release/WubiVoice.app
 
 debug: $(DEPS_CHECK)
 	mkdir -p $(DERIVED_DATA_PATH)
 	bash package/add_data_files
 	xcodebuild -project Squirrel.xcodeproj -configuration Debug -scheme Squirrel -derivedDataPath $(DERIVED_DATA_PATH)  $(BUILD_SETTINGS) build
+	bash scripts/copy-wubivoice-data $(DERIVED_DATA_PATH)/Build/Products/Debug/WubiVoice.app
 
 .PHONY: sparkle copy-sparkle-framework
 

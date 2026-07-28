@@ -1,0 +1,20 @@
+#!/bin/bash
+set -euo pipefail
+
+source_dir=${1:?usage: update-wubi-schema PATH_TO_PINNED_SOURCE}
+expected=a194fb8b3ec41ef9dcf079d3a67876fa75f79135
+test "$(git -C "$source_dir" rev-parse HEAD)" = "$expected"
+
+destination=data/wubivoice
+mkdir -p "$destination/lua"
+for file in \
+  LICENSE pinyin_simp.dict.yaml pinyin_simp.schema.yaml \
+  wubi86_jidian.dict.yaml wubi86_jidian.schema.yaml \
+  wubi86_jidian_extra.dict.yaml wubi86_jidian_extra_district.dict.yaml \
+  wubi86_jidian_pinyin.schema.yaml wubi86_jidian_trad.schema.yaml \
+  wubi86_jidian_trad_pinyin.schema.yaml wubi86_jidian_user.dict.yaml \
+  wubi86_jidian_user_hamster.dict.yaml
+do
+  cp "$source_dir/$file" "$destination/$file"
+done
+cp "$source_dir"/lua/*.lua "$destination/lua/"
