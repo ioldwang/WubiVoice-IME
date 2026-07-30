@@ -47,8 +47,11 @@ final class SquirrelInstaller {
       // Already registered.
       return
     }
-    TISRegisterInputSource(SquirrelApp.appDir as CFURL)
-    print("Registered input source from \(SquirrelApp.appDir)")
+    let error = TISRegisterInputSource(SquirrelApp.appDir as CFURL)
+    print(
+      "\(error == noErr ? "Registered" : "Failed to register") input source "
+        + "from \(SquirrelApp.appDir) (status: \(error))"
+    )
   }
 
   func enable(modes: [InputMode] = []) {
@@ -59,7 +62,11 @@ final class SquirrelInstaller {
       return
     }
     let modesToEnable = modes.isEmpty ? [.primary] : modes
-    for (mode, inputSource) in getInputSource(modes: modesToEnable) {
+    let sourcesToEnable = getInputSource(modes: modesToEnable)
+    if sourcesToEnable.isEmpty {
+      print("Input source is registered but not available in this login session yet")
+    }
+    for (mode, inputSource) in sourcesToEnable {
       if let enabled = getBool(for: inputSource, key: kTISPropertyInputSourceIsEnabled), !enabled {
         let error = TISEnableInputSource(inputSource)
         print("Enable \(error == noErr ? "succeeds" : "fails") for input source: \(mode.rawValue)")
@@ -78,13 +85,22 @@ final class SquirrelInstaller {
         return
       }
     }
-    for (mode, inputSource) in getInputSource(modes: [modeToSelect]) {
+    let sourcesToSelect = getInputSource(modes: [modeToSelect])
+    if sourcesToSelect.isEmpty {
+      print("Input source is not available for selection: \(modeToSelect.rawValue)")
+    }
+    for (mode, inputSource) in sourcesToSelect {
       if let enabled = getBool(for: inputSource, key: kTISPropertyInputSourceIsEnabled),
          let selectable = getBool(for: inputSource, key: kTISPropertyInputSourceIsSelectCapable),
          let selected = getBool(for: inputSource, key: kTISPropertyInputSourceIsSelected),
          enabled && selectable && !selected {
         let error = TISSelectInputSource(inputSource)
         print("Selection \(error == noErr ? "succeeds" : "fails") for input source: \(mode.rawValue)")
+      } else if let selected = getBool(
+        for: inputSource,
+        key: kTISPropertyInputSourceIsSelected
+      ), selected {
+        print("Input source is already selected: \(mode.rawValue)")
       } else {
         print("Failed to select \(mode.rawValue)")
       }
